@@ -2,7 +2,7 @@
 <script>
 
 	import componentFactory from './componentFactory.js'
-	import PdfjsWorker from 'pdfjs-dist/build/pdf.worker.js'
+	// import PdfjsWorker from 'pdfjs-dist/build/pdf.worker.js'
 
 	if ( process.env.VUE_ENV !== 'server' ) {
 
@@ -12,7 +12,8 @@
 		if ( typeof window !== 'undefined' && 'Worker' in window && navigator.appVersion.indexOf('MSIE 10') === -1 ) {
 
 			// var PdfjsWorker = require('worker-loader!pdfjs-dist/es5/build/pdf.worker.js');
-			PDFJS.GlobalWorkerOptions.workerPort = new PdfjsWorker();
+			// PDFJS.GlobalWorkerOptions.workerPort = new PdfjsWorker();
+			PDFJS.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.5.207/pdf.worker.min.js'
 		}
 
 		var component = componentFactory(pdfjsWrapper(PDFJS));
